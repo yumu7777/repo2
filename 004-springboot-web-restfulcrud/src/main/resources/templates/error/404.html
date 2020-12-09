@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Dashboard Template for Bootstrap</title>
+		<!-- Bootstrap core CSS -->
+		<link href="asserts/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="asserts/css/dashboard.css" rel="stylesheet">
+		<style type="text/css">
+			/* Chart.js */
+			
+			@-webkit-keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			@keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.chartjs-render-monitor {
+				-webkit-animation: chartjs-render-animation 0.001s;
+				animation: chartjs-render-animation 0.001s;
+			}
+		</style>
+	</head>
+	<!--
+		如何定制错误的页面；**
+
+​			**1）、有模板引擎的情况下；error/状态码;** 【将错误页面命名为  错误状态码.html 放在模板引擎文件夹里面的 error文件夹下】，发生此状态码的错误就会来到  对应的页面；
+
+​			我们可以使用4xx和5xx作为错误页面的文件名来匹配这种类型的所有错误，精确优先（优先寻找精确的状态码.html）；
+
+​			页面能获取的信息；
+
+​				timestamp：时间戳
+
+​				status：状态码
+
+​				error：错误提示
+
+​				exception：异常对象
+
+​				message：异常消息
+
+​				errors：JSR303数据校验的错误都在这里
+
+​			2）、没有模板引擎（模板引擎找不到这个错误页面），静态资源文件夹下找；
+
+​			3）、以上都没有错误页面，就是默认来到SpringBoot默认的错误提示页面；
+
+	-->
+
+	<body>
+	<!--引入抽取的topbar-->
+	<div th:replace="commons/bar::topbar"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<!--添加侧边栏-->
+				<div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
+
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<h1>status:[[${status}]]</h1>
+					<h1>timestamp:[[${timestamp}]]</h1>
+					<h2>exception:[[${exception}]]</h2>
+					<h2>message:[[${message}]]</h2>
+					<h2>error:[[${error}]]</h2>
+				</main>
+			</div>
+		</div>
+
+
+		<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+		<script type="text/javascript" src="asserts/js/popper.min.js" th:src="@{/webjars/popper.js/1.11.1/dist/popper.js}"></script>
+		<script type="text/javascript" src="asserts/js/bootstrap.min.js" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/asserts/js/feather.min.js}"></script>
+		<script>
+			feather.replace()
+		</script>
+
+
+	</body>
+
+</html>
